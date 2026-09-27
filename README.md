@@ -1,4 +1,7 @@
+
 # Cloud Security Posture Audit using Prowler on GCP
+<img width="1063" height="538" alt="Screenshot 2026-09-19 at 14 20 04" src="https://github.com/user-attachments/assets/cd3c2fa2-9f27-4dba-b68a-050e8d5957b4" />
+
 
 ## Project Overview
 It is a step-by-step guide to auditing a Google Cloud environment against the CIS Google Cloud Platform Foundations Benchmark using Prowler. This includes from setup, to scan, to remediation, to verification.
@@ -6,6 +9,10 @@ It is a step-by-step guide to auditing a Google Cloud environment against the CI
 ## What I did
 - Set up a GCP project with the the right permission for auditing.
 - Created a storage bucket and made it public by adding the **allUsers** principal, assigned the role **Storage Object Viewer** and a service account with overprivileged permissions, granting it an **Editor** basic role at the project level.
+<img width="1321" height="792" alt="Screenshot 2026-09-19 at 13 57 32" src="https://github.com/user-attachments/assets/6992f7ad-88e8-4509-9c6b-5a5db507dbc4" />
+
+<img width="748" height="738" alt="Screenshot 2026-09-19 at 14 05 03" src="https://github.com/user-attachments/assets/71b5d491-c12c-4e9a-8fa6-97b74dd96d30" />
+
 - Installed and authenticated Prowler
 - Ran a full security scan against the CIS GCP benchmark
 - Read and prioritize the findings
@@ -63,9 +70,11 @@ This runs Prowler's full default GCP check set.
 
 ### Step 6: Review the Report
 Prowler writes output to an output/ folder in table, CSV, JSON, and HTML formats. 
-Open the HTML report first (it's the most readable). 
+Open the HTML report first as it's the most readable. 
 You can run it by running:
-
+```
+python3 "the file"
+```
 For each finding, note:
 
 Severity: how Prowler ranked it
@@ -74,9 +83,7 @@ Real-world risk: what an attacker could actually do with it (don't just triage b
 
 ### Step 7: Remediate
 
-Work through findings one at a time. The most common ones you'll see on a fresh project, and their fixes:
-
-
+Filter and work through findings one at a time. The most common ones you'll see on a fresh project, and their fixes:
 | Finding | Typical Fix | 
 | -------- | -------- | 
 | Public Cloud Storage bucket | Remove allUsers/allAuthenticatedUsers IAM bindings (Enable Public Access Prevention )| 
